@@ -17,7 +17,7 @@ they may use. <br>
 
 The goal is to use the lambda architecture for our health
 monitor system. See the figure below:<br>
-![lambda](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/Images/lambda.png)<br>
+![lambda](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/lambda.png)<br>
 
 * The data is persisted in the batch layer using HDFS commands initiated from the scheduler.
 * Then the data is processed regularly using map-reduce to generate batch views creating the serving layer.
@@ -30,7 +30,7 @@ monitor system. See the figure below:<br>
 The mock microservices system is built in which
 services send health messages to a certain client server. The client server should
 receive these messages, catalog, and persist them on HDFS.
-![microservices](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/Images/microservices.png)<br>
+![microservices](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/microservices.png)<br>
 * The health messages will be in JSON format. Each message contains the service
 name, timestamp, CPU utilization percentage, RAM total and free space in GBs,
 and Disk total and free space in GBs.<br>
