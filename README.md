@@ -77,7 +77,10 @@ $HADOOP_HOME/bin/hadoop com.sun.tools.javac.Main HealthMapReduce.java
 To create JAR file:
 jar cf MapReduce.jar HealthMapReduce*.class
 ```
+Here is an example of a mapreduce job running:
+![https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce.png](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce.png)
 (You will find in images photos of HDFS running and the data in the /Input directory)<br><br>
 
-Finally, The mapreduce create 5 PARQUET files which are [year.parquet , mounth.parquet , day.parquet , hour.parquet , minute.parquet] in /Output directory in HDFS.
+Finally, The mapreduce creates <b>5 PARQUET files</b> which are [year.parquet , mounth.parquet , day.parquet , hour.parquet , minute.parquet] 
+in /Output directory in HDFS.
 Everytime mapreduce job is initiated it overwrites them. Then we use DuckDB to query the parquet files. (you will find the query code in the mapreduce directory)
