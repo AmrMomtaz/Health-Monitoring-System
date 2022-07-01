@@ -26,6 +26,8 @@ monitor system. See the figure below:<br>
 * We've used <b>DuckDB</b> for both NOSQL databes for the serving layer and speed layer.
 * The scheduler handles initiating the mapreduce jobs periodically and expiring the realtime views.
 
+<b>Please note that you should have hadoop installed and you should have $HADOOP_HOME and $HADOOP_CLASSPATH are set correctly.</b>
+
 ## Micro-services 
 
 The mock microservices system is built in which
@@ -53,8 +55,29 @@ The map reduce jobs will calculate the required statistics:
 * The peak of utilization for each resource for each service.
 * The count of health messages received for each service.<br>
 
-
 The map step of any map-reduce job processes each record
 individually producing a record or more as a result. The reduce step collects all
 records having a common attribute and produces one record summarizing,
-reducing, these records.
+reducing, these records.<br>
+You can find the MapReduce.jar in the mapreduce directory. Run the mapreduce job using the following command.<br>
+```
+$HADOOP_HOME/bin/hadoop jar MapReduce.jar HealthMapReduce
+```
+<b>PLEASE NOTE:</b> You should create a /Input directory in HDFS and put the data in it.
+The data should be in .csv files as shown before. You will use the following commands
+to create new directory and to move the data to HDFS
+```
+$HADOOP_HOME/bin/hdfs dfs -mkdir <folder name>
+$HADOOP_HOME/bin/hdfs dfs -copyFromLocal <local file path>  <dest(present on hdfs)>
+```
+If you want to change the source code and create a new mapredeuce.jar file use the following commands:
+```
+To compile the code:
+$HADOOP_HOME/bin/hadoop com.sun.tools.javac.Main HealthMapReduce.java
+To create JAR file:
+jar cf MapReduce.jar HealthMapReduce*.class
+```
+(You will find in images photos of HDFS running and the data in the /Input directory)<br><br>
+
+Finally, The mapreduce create 5 PARQUET files which are [year.parquet , mounth.parquet , day.parquet , hour.parquet , minute.parquet] in /Output directory in HDFS.
+Everytime mapreduce job is initiated it overwrites them. Then we use DuckDB to query the parquet files. (you will find the query code in the mapreduce directory)
