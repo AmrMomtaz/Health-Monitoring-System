@@ -78,9 +78,13 @@ To create JAR file:
 jar cf MapReduce.jar HealthMapReduce*.class
 ```
 Here is an example of a mapreduce job running:
-![https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce.png](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce.png)
-(You will find in images photos of HDFS running and the data in the /Input directory)<br><br>
+![https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce.png](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce.png)<br>
 
-Finally, The mapreduce creates <b>5 PARQUET files</b> which are [year.parquet , mounth.parquet , day.parquet , hour.parquet , minute.parquet] 
-in /Output directory in HDFS.
-Everytime mapreduce job is initiated it overwrites them. Then we use DuckDB to query the parquet files. (you will find the query code in the mapreduce directory)
+<b>IMPORTANT NOTES:</b>
+* The percision of queries are in minutes.
+* The mapreduce creates <b>5 PARQUET files</b> which are [year.parquet , mounth.parquet , day.parquet , hour.parquet , minute.parquet] 
+to make the queries faster and reduce query latency.
+* The mapreduce writes the parquet files in /Output directory in HDFS and everytime mapreduce job is initiated it overwrites them.
+ Here is the mapreduce output:
+![https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce_output.png](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce_output.png)
+* We use DuckDB to query the parquet files. (you will find the query code in the mapreduce directory)
