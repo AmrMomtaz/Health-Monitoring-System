@@ -17,4 +17,10 @@ they may use. <br>
 
 The goal is to use the lambda architecture for our health
 monitor system. See the figure below:<br>
-![lambda](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/Images/lambda.png)
+![lambda](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/Images/lambda.png)<br>
+
+* The data is persisted in the batch layer using HDFS commands initiated from the scheduler.
+* Then the data is processed regularly using map-reduce to generate batch views creating the serving layer.
+* For the speed layer, Spark jobs are initiated for new data generating realtime views.
+* We've used <b>DuckDB</b> for both NOSQL databes for the serving layer and speed layer.
+* The scheduler handles initiating the mapreduce jobs and expiring the realtime views.
