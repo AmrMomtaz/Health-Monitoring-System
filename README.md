@@ -97,7 +97,7 @@ It listens to "Spark_data" folder for new inputs to start processing it immediat
 The query still uses the old spark job.
 * When the mapreduce job ends, the old spark job is deleted and the new spark job continues till the next mapreduce fire.
 
-## Spark files:
+### Spark files:
 * "SparkSession.py" the spark job execution code
 * "state.txt" it tells the schedular what is the state of the realtime view
 #### There are 3 possible states:
@@ -105,7 +105,7 @@ The query still uses the old spark job.
  * 1: the second spark job is running
  * 2: both spark jobs are running "when the mapreduce job is in-progress".
  
-## Output folders:
+### Output folders:
 * "MapReduceOutput" where the parquet files are downloaded locally from hadoop
 * "Spark_data" a folder where the spark jon listens to
 * "SparkOutput1"/"SparkOutput2" where the parquet files are added locally from spark jobs depending on which job is running.
@@ -122,7 +122,7 @@ To start the simulation:
 * The simulator periodically adds the services files to "spark_data" folder where spark listens.
 * The schedular waits for a given time and then starts the mapreduce job and adjusts the spark jobs to work accordingly.
 
-## Notes:
+### Notes:
 * Make sure all paths are adjusted according to your working space
 * Make sure the mapreduce.jar exists in the same directory as the schedular.
 * Add Spark_data folder and adjust the path to it in the SparkSession.py script if needed.
