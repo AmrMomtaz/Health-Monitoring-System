@@ -88,3 +88,19 @@ to make the queries faster and reduce query latency.
  Here is the mapreduce output:
 ![https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce_output.png](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce_output.png)
 * We use DuckDB to query the parquet files. (you will find the query code in the mapreduce directory)
+
+# Spark
+* The spark job represents the real time view of the system.
+It listens to "Spark_data" folder for new inputs to start processing it immediatly.
+* When a query is made, it utilized both the realtime view and the batch view where the realtime view represents only the last hour and the batch view represents all the data since the beginning
+* While the mapreduce job is running, 2 spark jobs are being fired, the old one which has the data since the last mapreduce job and a new one that starts with the new mapreduce job.
+The query still uses the old spark job.
+* When the mapreduce job ends, the old spark job is deleted and the new spark job continues till the next mapreduce fire.
+
+## Spark files:
+* SparkOutput2/SparkOutput1 where the parquet files of the processed data from the spark job is saved
+* "SparkSession.py" the spark job execution code
+* "state.txt" it tells the schedular what is the state of the realtime view
+ -the first spark job is running
+ -the second spark job is running
+ -both spark jobs are running "when the mapreduce job is in-progress".
