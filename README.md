@@ -100,7 +100,7 @@ The query still uses the old spark job.
 ## Spark files:
 * "SparkSession.py" the spark job execution code
 * "state.txt" it tells the schedular what is the state of the realtime view
-There are 3 possible states:
+#### There are 3 possible states:
  * 0: the first spark job is running
  * 1: the second spark job is running
  * 2: both spark jobs are running "when the mapreduce job is in-progress".
@@ -113,7 +113,7 @@ they are all added to spark folder.
 ### Make sure these folder exists under /spark/ directory.
 
 # Simulations:
-* "Spark/QueryAllData.py" is a script that fetches the needed data from the database
+* "Spark/QueryAllData.py" is a script that fetches the needed data both the realtime and the batch views.
 * "Spark/Simulator.py"/"Spark/schedular.py" is used to simulate the working flow of the realtime view and the batch view:
 To start the simulation:
 * start the hadoop server as mentioned above.
@@ -125,4 +125,4 @@ To start the simulation:
 ## Notes:
 * Make sure all paths are adjusted according to your working space
 * Make sure the mapreduce.jar exists in the same directory as the schedular.
-* Add Spark_data folder and adjust the path to it in the SparkSession.py script.
+* Add Spark_data folder and adjust the path to it in the SparkSession.py script if needed.
