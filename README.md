@@ -110,6 +110,7 @@ There are 3 possible states:
 * "Spark_data" a folder where the spark jon listens to
 * "SparkOutput1"/"SparkOutput2" where the parquet files are added locally from spark jobs depending on which job is running.
 they are all added to spark folder.
+### Make sure these folder exists under /spark/ directory.
 
 # Simulations:
 * "Spark/QueryAllData.py" is a script that fetches the needed data from the database
@@ -117,6 +118,7 @@ they are all added to spark folder.
 To start the simulation:
 * start the hadoop server as mentioned above.
 * start the spark job using the SparkSession.py script.
+* run both the simulator.py and schedular.py scripts.
 * the simulator periodically adds the services files to "spark_data" folder where spark listens.
 * the schedular waits for a given time and then starts the mapreduce job and adjusts the spark jobs to work accordingly.
 
