@@ -104,3 +104,7 @@ The query still uses the old spark job.
  -the first spark job is running
  -the second spark job is running
  -both spark jobs are running "when the mapreduce job is in-progress".
+ 
+ # Simulations:
+ * "Spark/QueryAllData.py" is a script that retrieves the needed columns
+ * "Spark/Simulator.py" is used to simulate the working flow of the realtime view and the batch view.
