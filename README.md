@@ -26,7 +26,7 @@ monitor system. See the figure below:<br>
 * We've used <b>DuckDB</b> for both NOSQL databes for the serving layer and speed layer.
 * The scheduler handles initiating the mapreduce jobs periodically and expiring the realtime views.
 
-<b>Please note that you should have hadoop installed and you should have $HADOOP_HOME and $HADOOP_CLASSPATH are set correctly.</b>
+<b>Please note that you should have hadoop installed (single node or multi-node setup) and you should have $HADOOP_HOME and $HADOOP_CLASSPATH paths are set correctly. (you can follow this <a href = "https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html">link</a> for hadoop setup guide)</b>
 
 ## Micro-services 
 
@@ -89,7 +89,7 @@ to make the queries faster and reduce query latency.
 ![https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce_output.png](https://github.com/AmrMomtaz/Health-Monitoring-System/blob/main/images/mapreduce_output.png)
 * We use DuckDB to query the parquet files. (you will find the query code in the mapreduce directory)
 
-# Spark
+## Spark
 * The spark job represents the real time view of the system.
 It listens to "Spark_data" folder for new inputs to start processing it immediatly.
 * When a query is made, it utilized both the realtime view and the batch view where the realtime view represents only the last hour and the batch view represents all the data since the beginning
@@ -112,7 +112,7 @@ The query still uses the old spark job.
 they are all added to spark folder.
 #### Make sure these folder exists under /spark/ directory.
 
-# Simulations:
+## Simulations:
 * "Spark/QueryAllData.py" is a script that fetches the needed data both the realtime and the batch views.
 * "Spark/Simulator.py"/"Spark/schedular.py" is used to simulate the working flow of the realtime view and the batch view:
 To start the simulation:
