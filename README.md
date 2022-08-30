@@ -101,9 +101,9 @@ The query still uses the old spark job.
 * "SparkSession.py" the spark job execution code
 * "state.txt" it tells the schedular what is the state of the realtime view
 There are 3 possible states:
- *0: the first spark job is running
- *1: the second spark job is running
- *2: both spark jobs are running "when the mapreduce job is in-progress".
+ * 0: the first spark job is running
+ * 1: the second spark job is running
+ * 2: both spark jobs are running "when the mapreduce job is in-progress".
  
 ## Output folders:
 * "MapReduceOutput" where the parquet files are downloaded locally from hadoop
