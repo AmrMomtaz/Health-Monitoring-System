@@ -122,4 +122,5 @@ To start the simulation:
 
 ## Notes:
 * Make sure all paths are adjusted according to your working space
+* Make sure the mapreduce.jar exists in the same directory as the schedular.
 * Add Spark_data folder and adjust the path to it in the SparkSession.py script.
