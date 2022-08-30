@@ -98,13 +98,28 @@ The query still uses the old spark job.
 * When the mapreduce job ends, the old spark job is deleted and the new spark job continues till the next mapreduce fire.
 
 ## Spark files:
-* SparkOutput2/SparkOutput1 where the parquet files of the processed data from the spark job is saved
 * "SparkSession.py" the spark job execution code
 * "state.txt" it tells the schedular what is the state of the realtime view
- -the first spark job is running
- -the second spark job is running
- -both spark jobs are running "when the mapreduce job is in-progress".
+There are 3 possible states:
+ *0: the first spark job is running
+ *1: the second spark job is running
+ *2: both spark jobs are running "when the mapreduce job is in-progress".
  
- # Simulations:
- * "Spark/QueryAllData.py" is a script that retrieves the needed columns
- * "Spark/Simulator.py" is used to simulate the working flow of the realtime view and the batch view.
+## Output folders:
+* "MapReduceOutput" where the parquet files are downloaded locally from hadoop
+* "Spark_data" a folder where the spark jon listens to
+* "SparkOutput1"/"SparkOutput2" where the parquet files are added locally from spark jobs depending on which job is running.
+they are all added to spark folder.
+
+# Simulations:
+* "Spark/QueryAllData.py" is a script that fetches the needed data from the database
+* "Spark/Simulator.py"/"Spark/schedular.py" is used to simulate the working flow of the realtime view and the batch view:
+To start the simulation:
+* start the hadoop server as mentioned above.
+* start the spark job using the SparkSession.py script.
+* the simulator periodically adds the services files to "spark_data" folder where spark listens.
+* the schedular waits for a given time and then starts the mapreduce job and adjusts the spark jobs to work accordingly.
+
+## Notes:
+* Make sure all paths are adjusted according to your working space
+* Add Spark_data folder and adjust the path to it in the SparkSession.py script.
