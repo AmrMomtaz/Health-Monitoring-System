@@ -110,17 +110,17 @@ The query still uses the old spark job.
 * "Spark_data" a folder where the spark jon listens to
 * "SparkOutput1"/"SparkOutput2" where the parquet files are added locally from spark jobs depending on which job is running.
 they are all added to spark folder.
-### Make sure these folder exists under /spark/ directory.
+#### Make sure these folder exists under /spark/ directory.
 
 # Simulations:
 * "Spark/QueryAllData.py" is a script that fetches the needed data both the realtime and the batch views.
 * "Spark/Simulator.py"/"Spark/schedular.py" is used to simulate the working flow of the realtime view and the batch view:
 To start the simulation:
-* start the hadoop server as mentioned above.
-* start the spark job using the SparkSession.py script.
-* run both the simulator.py and schedular.py scripts.
-* the simulator periodically adds the services files to "spark_data" folder where spark listens.
-* the schedular waits for a given time and then starts the mapreduce job and adjusts the spark jobs to work accordingly.
+* Start the hadoop server as mentioned above.
+* Start the spark job using the SparkSession.py script.
+* Run both the simulator.py and schedular.py scripts.
+* The simulator periodically adds the services files to "spark_data" folder where spark listens.
+* The schedular waits for a given time and then starts the mapreduce job and adjusts the spark jobs to work accordingly.
 
 ## Notes:
 * Make sure all paths are adjusted according to your working space
